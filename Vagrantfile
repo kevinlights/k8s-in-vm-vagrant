@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
     master.vm.provider "virtualbox" do |vb|
       vb.memory = 1800
       vb.cpus = 2
+    end
   end
   config.vm.define "k8s-worker1" do |worker1|
     worker1.vm.box = "hashicorp/bionic64"
