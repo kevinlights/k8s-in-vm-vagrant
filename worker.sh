@@ -13,7 +13,7 @@ mkdir -p /tmp/docker-bionic
 wget -q -P /tmp/docker-bionic https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/containerd.io_1.6.21-1_amd64.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce-cli_24.0.1-1~ubuntu.18.04~bionic_amd64.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce_24.0.1-1~ubuntu.18.04~bionic_amd64.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-buildx-plugin_0.10.4-1~ubuntu.18.04~bionic_amd64.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-compose-plugin_2.18.1-1~ubuntu.18.04~bionic_amd64.deb
 sudo dpkg -i /tmp/docker-bionic/*.deb
 sudo rm -rf /tmp/docker-bionic
-echo "{\"exec-opts\":[\"native.cgroupdriver=systemd\"],\"log-driver\":\"json-file\",\"log-opts\":{\"max-size\":\"100m\"},\"storage-driver\":\"overlay2\"}" | sudo tee /etc/docker/daemon.json
+echo "{\"exec-opts\":[\"native.cgroupdriver=cgroupfs\"],\"log-driver\":\"json-file\",\"log-opts\":{\"max-size\":\"100m\"},\"storage-driver\":\"overlay2\"}" | sudo tee /etc/docker/daemon.json
 sudo systemctl daemon-reload
 sudo systemctl start docker
 sudo systemctl enable docker
